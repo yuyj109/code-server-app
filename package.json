@@ -1,0 +1,14 @@
+{
+  "name": "code-server-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac --x64"
+  },
+  "devDependencies": {
+    "electron": "^4.0.7",
+    "electron-builder": "^20.38.5"
+  }
+}
