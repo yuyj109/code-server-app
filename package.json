@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --mac --x64"
+    "build:mac": "electron-builder --mac --x64",
+    "build:windows": "electron-builder --win --x64",
+    "build:linux": "electron-builder --linux --x64"
   },
   "devDependencies": {
     "electron": "^4.0.7",
