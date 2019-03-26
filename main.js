@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, Menu, BrowserWindow } = require("electron");
+const { app, Menu, BrowserWindow, globalShortcut } = require("electron");
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,11 +10,18 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
-    fullscreen: true,
+    fullscreen: false,
     webPreferences: {
       nodeIntegration: true
     }
   });
+
+  globalShortcut.register('f5', function() {
+		mainWindow.reload()
+	})
+	globalShortcut.register('CommandOrControl+R', function() {
+		mainWindow.reload()
+	})
 
   // and load the index.html of the app.
   mainWindow.loadURL("https://localhost:8443/");
@@ -27,6 +34,7 @@ function createWindow() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
+    Electron.session.defaultSession.clearCache(() => {})
     mainWindow = null;
   });
   // Create the Application's main menu
